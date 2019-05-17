@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.task.mondiamedia.mondiamediaapplication.R;
 import com.task.mondiamedia.mondiamediaapplication.network.DownloadImageTask;
-import com.task.mondiamedia.mondiamediaapplication.network.modle.SongModel;
+import com.task.mondiamedia.mondiamediaapplication.model.SongModel;
 
 import java.util.List;
 
@@ -18,10 +18,12 @@ import java.util.List;
  * Created by Summer on 5/17/2019.
  */
 public class SongsListAdapter extends RecyclerView.Adapter<SongsListAdapter.SongsViewHolder> {
-    List<SongModel> songModels;
+    private List<SongModel> songModels;
+    private SongsListListener songsListListener;
 
-    public SongsListAdapter(List<SongModel> songModels) {
+    public SongsListAdapter(List<SongModel> songModels, SongsListListener songsListListener) {
         this.songModels = songModels;
+        this.songsListListener = songsListListener;
     }
 
     @NonNull
@@ -32,7 +34,7 @@ public class SongsListAdapter extends RecyclerView.Adapter<SongsListAdapter.Song
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SongsViewHolder songsViewHolder, int i) {
+    public void onBindViewHolder(@NonNull SongsViewHolder songsViewHolder, final int i) {
         songsViewHolder.title.setText(songModels.get(i).getTitle());
         songsViewHolder.type.setText(songModels.get(i).getType());
         songsViewHolder.artist.setText(songModels.get(i).getArtistName());
@@ -41,6 +43,12 @@ public class SongsListAdapter extends RecyclerView.Adapter<SongsListAdapter.Song
         if (songsViewHolder.imageView != null) {
             new DownloadImageTask(songsViewHolder.imageView).execute(songModels.get(i).getSongImg());
         }
+        songsViewHolder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                songsListListener.onSongsItemClicked(songModels.get(i));
+            }
+        });
     }
 
     @Override
@@ -49,6 +57,7 @@ public class SongsListAdapter extends RecyclerView.Adapter<SongsListAdapter.Song
     }
 
     public static class SongsViewHolder extends RecyclerView.ViewHolder {
+        private ViewGroup container;
         private ImageView imageView;
         private TextView title;
         private TextView type;
@@ -56,6 +65,7 @@ public class SongsListAdapter extends RecyclerView.Adapter<SongsListAdapter.Song
 
         public SongsViewHolder(View v) {
             super(v);
+            container = v.findViewById(R.id.container);
             imageView = v.findViewById(R.id.img);
             title = v.findViewById(R.id.song_title);
             type = v.findViewById(R.id.song_type);

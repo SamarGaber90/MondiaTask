@@ -1,4 +1,4 @@
-package com.task.mondiamedia.mondiamediaapplication.network.modle;
+package com.task.mondiamedia.mondiamediaapplication.model;
 
 import android.util.Log;
 

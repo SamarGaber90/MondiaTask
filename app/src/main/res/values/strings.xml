@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MondiaMediaApplication</string>
+    <string name="search_menu">search</string>
+
+    <string name="type">Type : </string>
+    <string name="artistName">Artist Name : </string>
+    <string name="publishingDate">Publishing Date : </string>
+    <string name="trackNumber">Track Number : </string>
+    <string name="duration">Duration : </string>
+
 </resources>

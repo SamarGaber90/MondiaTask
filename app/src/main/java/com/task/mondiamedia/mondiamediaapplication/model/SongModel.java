@@ -1,22 +1,27 @@
-package com.task.mondiamedia.mondiamediaapplication.network.modle;
+package com.task.mondiamedia.mondiamediaapplication.model;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Summer on 5/16/2019.
  */
-public class SongModel {
+public class SongModel implements Serializable {
 
     private String type;
     private String title;
     private String artistName;
     private String songImg;
+    private String publishingDate;
+    private String trackNumber;
+    private String duration;
 
     public String getType() {
         return type;
@@ -50,6 +55,30 @@ public class SongModel {
         this.songImg = songImg;
     }
 
+    public String getPublishingDate() {
+        return publishingDate;
+    }
+
+    public void setPublishingDate(String publishingDate) {
+        this.publishingDate = publishingDate;
+    }
+
+    public String getTrackNumber() {
+        return trackNumber;
+    }
+
+    public void setTrackNumber(String trackNumber) {
+        this.trackNumber = trackNumber;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
     public static List<SongModel> getSongsListFromJsonArray(JSONArray jsonArray) {
         List<SongModel> songModelList = null;
         if (jsonArray != null && jsonArray.length() > 0) {
@@ -59,9 +88,13 @@ public class SongModel {
                 try {
                     songModel.setTitle(jsonArray.getJSONObject(iSong).getString("title"));
                     songModel.setType(jsonArray.getJSONObject(iSong).getString("type"));
+                    songModel.setPublishingDate(jsonArray.getJSONObject(iSong).getString("publishingDate"));
+                    songModel.setDuration(jsonArray.getJSONObject(iSong).getString("duration"));
+
+                    songModel.setTrackNumber(jsonArray.getJSONObject(iSong).getString("trackNumber"));
                     songModel.setArtistName(jsonArray.getJSONObject(iSong).getJSONObject("mainArtist").getString("name"));
 
-                    songModel.setSongImg(editUrl(jsonArray.getJSONObject(iSong).getJSONObject("cover").getString("template")));
+                    songModel.setSongImg(editUrl(jsonArray.getJSONObject(iSong).getJSONObject("cover").getString("template"), "80", "80"));
 
                     songModelList.add(songModel);
                 } catch (JSONException e) {
@@ -72,8 +105,8 @@ public class SongModel {
         return songModelList;
     }
 
-    private static String editUrl(String url) {
-        return "http:" + url.replace("{width}", "80").replace("{height}", "80").replace("{suffix}", "png");
+    private static String editUrl(String url, String width, String height) {
+        return "http:" + url.replace("{width}", width).replace("{height}", height).replace("{suffix}", "jpg");
     }
 
 }

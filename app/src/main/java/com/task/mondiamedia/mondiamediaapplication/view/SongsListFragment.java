@@ -1,4 +1,4 @@
-package com.task.mondiamedia.mondiamediaapplication;
+package com.task.mondiamedia.mondiamediaapplication.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,9 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.task.mondiamedia.mondiamediaapplication.network.SongsPresenter;
-import com.task.mondiamedia.mondiamediaapplication.network.modle.SongModel;
-import com.task.mondiamedia.mondiamediaapplication.view.ApiContract;
+import com.task.mondiamedia.mondiamediaapplication.R;
+import com.task.mondiamedia.mondiamediaapplication.view.adapter.SongsListListener;
+import com.task.mondiamedia.mondiamediaapplication.view.presenter.SongsPresenter;
+import com.task.mondiamedia.mondiamediaapplication.model.SongModel;
 import com.task.mondiamedia.mondiamediaapplication.view.adapter.SongsListAdapter;
 
 import java.util.List;
@@ -55,7 +56,7 @@ public class SongsListFragment extends Fragment implements ApiContract.SongsView
     public void showSongsList(List<SongModel> songModels) {
         progressBar.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
-        recyclerView.setAdapter(new SongsListAdapter(songModels));
+        recyclerView.setAdapter(new SongsListAdapter(songModels, (SongsListListener) getActivity()));
     }
 
     @Override

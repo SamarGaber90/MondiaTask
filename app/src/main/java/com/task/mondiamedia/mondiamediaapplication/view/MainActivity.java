@@ -1,4 +1,4 @@
-package com.task.mondiamedia.mondiamediaapplication;
+package com.task.mondiamedia.mondiamediaapplication.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import com.task.mondiamedia.mondiamediaapplication.R;
+import com.task.mondiamedia.mondiamediaapplication.model.SongModel;
+import com.task.mondiamedia.mondiamediaapplication.view.adapter.SongsListListener;
+import com.task.mondiamedia.mondiamediaapplication.view.presenter.SongDetailsFragment;
+
+public class MainActivity extends AppCompatActivity implements SongsListListener {
     private SongsListFragment songsListFragment;
 
     @Override
@@ -25,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
 
-        MenuItem mSearch = menu.findItem(R.id.action_search);
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
 
-        SearchView mSearchView = (SearchView) mSearch.getActionView();
+        SearchView mSearchView = (SearchView) searchMenuItem.getActionView();
         mSearchView.setQueryHint("Search");
         mSearchView.setSubmitButtonEnabled(true);
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -43,5 +48,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void onSongsItemClicked(SongModel songModel) {
+        getSupportFragmentManager().beginTransaction().add(R.id.container, SongDetailsFragment.getDetailsFragmentInstance(songModel)).addToBackStack("details").commit();
     }
 }

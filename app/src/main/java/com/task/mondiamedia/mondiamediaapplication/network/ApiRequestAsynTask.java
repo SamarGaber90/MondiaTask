@@ -3,8 +3,8 @@ package com.task.mondiamedia.mondiamediaapplication.network;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 
-import com.task.mondiamedia.mondiamediaapplication.network.modle.InputStreamRequest;
-import com.task.mondiamedia.mondiamediaapplication.network.modle.SongModel;
+import com.task.mondiamedia.mondiamediaapplication.model.InputStreamRequest;
+import com.task.mondiamedia.mondiamediaapplication.model.SongModel;
 import com.task.mondiamedia.mondiamediaapplication.view.ApiContract;
 
 import org.json.JSONArray;
@@ -28,7 +28,7 @@ public class ApiRequestAsynTask extends AsyncTask<String, Void, List<SongModel>>
 
 
     ApiContract.ApiListner apiListner;
-    Exception mException = null;
+    Exception exception = null;
 
     public ApiRequestAsynTask(ApiContract.ApiListner apiListner) {
         this.apiListner = apiListner;
@@ -37,7 +37,7 @@ public class ApiRequestAsynTask extends AsyncTask<String, Void, List<SongModel>>
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        this.mException = null;
+        this.exception = null;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class ApiRequestAsynTask extends AsyncTask<String, Void, List<SongModel>>
             return getSongsListRequest(accessToken, strings[1]);
 
         } catch (Exception e) {
-            this.mException = e;
+            this.exception = e;
         }
         return Collections.emptyList();
     }
@@ -62,8 +62,8 @@ public class ApiRequestAsynTask extends AsyncTask<String, Void, List<SongModel>>
     @Override
     protected void onPostExecute(List<SongModel> songModelList) {
         super.onPostExecute(songModelList);
-        if (this.mException != null) {
-            apiListner.onFetchFailed(this.mException.getMessage());
+        if (this.exception != null) {
+            apiListner.onFetchFailed(this.exception.getMessage());
         } else {
             //set view with list
             apiListner.onFetchSuccess(songModelList);
