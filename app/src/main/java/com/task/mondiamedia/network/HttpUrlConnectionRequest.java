@@ -1,4 +1,4 @@
-package com.task.mondiamedia.mondiamediaapplication.network;
+package com.task.mondiamedia.network;
 
 import android.text.TextUtils;
 
@@ -9,9 +9,9 @@ import java.net.URL;
 /**
  * Created by Summer on 5/16/2019.
  */
-public class HttpUrlConnectionRequest {
-    private static final String GETWAY_KEY = "X-MM-GATEWAY-KEY";
-    private static final String GETWAY_KEY_VALUE = "Ge6c853cf-5593-a196-efdb-e3fd7b881eca";
+class HttpUrlConnectionRequest {
+    private static final String GET_WAY_KEY = "X-MM-GATEWAY-KEY";
+    private static final String GET_WAY_KEY_VALUE = "Ge6c853cf-5593-a196-efdb-e3fd7b881eca";
 
     private static final String ACCESS_TOKE_KEY = "Authorization";
     private static final String ACCESS_TOKEN_KEY_VALUE = "Bearer ";
@@ -28,7 +28,7 @@ public class HttpUrlConnectionRequest {
         URL url = new URL(urlString.toString());
 
         httpURLConnection = (HttpURLConnection) url.openConnection();
-        httpURLConnection.setRequestProperty(GETWAY_KEY, GETWAY_KEY_VALUE);
+        httpURLConnection.setRequestProperty(GET_WAY_KEY, GET_WAY_KEY_VALUE);
         if (!TextUtils.isEmpty(accessToken)) {
             //then its songs list request ---> add new header
             httpURLConnection.setRequestProperty(ACCESS_TOKE_KEY, ACCESS_TOKEN_KEY_VALUE.concat(accessToken));

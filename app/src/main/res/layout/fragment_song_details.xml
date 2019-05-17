@@ -7,7 +7,7 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -23,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_margin="@dimen/view_margin"
+            android:contentDescription="@string/app_name"
             tools:src="@drawable/ic_launcher_background" />
 
 

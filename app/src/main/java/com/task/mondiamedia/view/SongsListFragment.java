@@ -1,6 +1,7 @@
-package com.task.mondiamedia.mondiamediaapplication.view;
+package com.task.mondiamedia.view;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,11 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.task.mondiamedia.mondiamediaapplication.R;
-import com.task.mondiamedia.mondiamediaapplication.view.adapter.SongsListListener;
-import com.task.mondiamedia.mondiamediaapplication.view.presenter.SongsPresenter;
-import com.task.mondiamedia.mondiamediaapplication.model.SongModel;
-import com.task.mondiamedia.mondiamediaapplication.view.adapter.SongsListAdapter;
+import com.task.mondiamedia.R;
+import com.task.mondiamedia.model.SongModel;
+import com.task.mondiamedia.view.adapter.SongsListAdapter;
+import com.task.mondiamedia.view.adapter.SongsListListener;
+import com.task.mondiamedia.view.presenter.SongsPresenter;
 
 import java.util.List;
 
@@ -30,16 +31,17 @@ public class SongsListFragment extends Fragment implements ApiContract.SongsView
     private TextView hintTv;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_songs_list, container, false);
+
         initView(rootView);
 
         songsPresenter = new SongsPresenter(this);
-        startFechingList(TMP_SEARCH_KEY);
+        startFetchingList(TMP_SEARCH_KEY);
         return rootView;
     }
 
-    private void startFechingList(String searchKey) {
+    private void startFetchingList(String searchKey) {
         songsPresenter.initialize();
         songsPresenter.fetch(searchKey);
     }
@@ -80,7 +82,6 @@ public class SongsListFragment extends Fragment implements ApiContract.SongsView
         }
         recyclerView.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
-
-        startFechingList(searchKey);
+        startFetchingList(searchKey);
     }
 }

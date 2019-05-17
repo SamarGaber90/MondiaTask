@@ -1,6 +1,5 @@
-package com.task.mondiamedia.mondiamediaapplication.model;
+package com.task.mondiamedia.model;
 
-import android.graphics.Bitmap;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -94,7 +93,7 @@ public class SongModel implements Serializable {
                     songModel.setTrackNumber(jsonArray.getJSONObject(iSong).getString("trackNumber"));
                     songModel.setArtistName(jsonArray.getJSONObject(iSong).getJSONObject("mainArtist").getString("name"));
 
-                    songModel.setSongImg(editUrl(jsonArray.getJSONObject(iSong).getJSONObject("cover").getString("template"), "80", "80"));
+                    songModel.setSongImg(editUrl(jsonArray.getJSONObject(iSong).getJSONObject("cover").getString("template")));
 
                     songModelList.add(songModel);
                 } catch (JSONException e) {
@@ -105,8 +104,8 @@ public class SongModel implements Serializable {
         return songModelList;
     }
 
-    private static String editUrl(String url, String width, String height) {
-        return "http:" + url.replace("{width}", width).replace("{height}", height).replace("{suffix}", "jpg");
+    private static String editUrl(String url) {
+        return "http:" + url.replace("{width}", "80").replace("{height}", "80").replace("{suffix}", "jpg");
     }
 
 }

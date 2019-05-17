@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MondiaMediaApplication</string>
+    <string name="app_name">MondiaMedia</string>
     <string name="search_menu">search</string>
 
     <string name="type">Type : </string>

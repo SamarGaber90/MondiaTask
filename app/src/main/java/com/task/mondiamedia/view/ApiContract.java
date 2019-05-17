@@ -1,6 +1,6 @@
-package com.task.mondiamedia.mondiamediaapplication.view;
+package com.task.mondiamedia.view;
 
-import com.task.mondiamedia.mondiamediaapplication.model.SongModel;
+import com.task.mondiamedia.model.SongModel;
 
 import java.util.List;
 

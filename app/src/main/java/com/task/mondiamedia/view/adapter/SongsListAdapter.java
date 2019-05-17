@@ -1,4 +1,4 @@
-package com.task.mondiamedia.mondiamediaapplication.view.adapter;
+package com.task.mondiamedia.view.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.task.mondiamedia.mondiamediaapplication.R;
-import com.task.mondiamedia.mondiamediaapplication.network.DownloadImageTask;
-import com.task.mondiamedia.mondiamediaapplication.model.SongModel;
+import com.task.mondiamedia.model.SongModel;
+import com.task.mondiamedia.R;
+import com.task.mondiamedia.network.DownloadImageTask;
 
 import java.util.List;
 
@@ -63,7 +63,7 @@ public class SongsListAdapter extends RecyclerView.Adapter<SongsListAdapter.Song
         private TextView type;
         private TextView artist;
 
-        public SongsViewHolder(View v) {
+        private SongsViewHolder(View v) {
             super(v);
             container = v.findViewById(R.id.container);
             imageView = v.findViewById(R.id.img);

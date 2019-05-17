@@ -1,11 +1,11 @@
-package com.task.mondiamedia.mondiamediaapplication.network;
+package com.task.mondiamedia.network;
 
 import android.os.AsyncTask;
 import android.text.TextUtils;
 
-import com.task.mondiamedia.mondiamediaapplication.model.InputStreamRequest;
-import com.task.mondiamedia.mondiamediaapplication.model.SongModel;
-import com.task.mondiamedia.mondiamediaapplication.view.ApiContract;
+import com.task.mondiamedia.model.InputStreamRequest;
+import com.task.mondiamedia.model.SongModel;
+import com.task.mondiamedia.view.ApiContract;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,8 +27,8 @@ public class ApiRequestAsynTask extends AsyncTask<String, Void, List<SongModel>>
     private static final String ALL_LIST_API_METHOD = "v2/api/sayt/flat?query=%s&limit=20";
 
 
-    ApiContract.ApiListner apiListner;
-    Exception exception = null;
+    private ApiContract.ApiListner apiListner;
+    private Exception exception = null;
 
     public ApiRequestAsynTask(ApiContract.ApiListner apiListner) {
         this.apiListner = apiListner;
@@ -94,11 +94,11 @@ public class ApiRequestAsynTask extends AsyncTask<String, Void, List<SongModel>>
     }
 
 
-    String getGetAccessTokenApiUrl() {
+    private String getGetAccessTokenApiUrl() {
         return BASE_URL.concat(TOKEN_API_METHOD);
     }
 
-    String getListApiUrl(String searchKey) {
+    private String getListApiUrl(String searchKey) {
         String url = String.format(ALL_LIST_API_METHOD, searchKey);
         return BASE_URL.concat(url);
     }

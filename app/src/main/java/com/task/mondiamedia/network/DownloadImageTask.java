@@ -1,4 +1,4 @@
-package com.task.mondiamedia.mondiamediaapplication.network;
+package com.task.mondiamedia.network;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -32,15 +32,13 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         if (isCancelled()) {
             bitmap = null;
         }
-        if (imageViewReference != null) {
-            ImageView imageView = imageViewReference.get();
-            if (imageView != null) {
-                if (bitmap != null) {
-                    imageView.setImageBitmap(bitmap);
-                } else {
-                    Drawable placeholder = ContextCompat.getDrawable(imageView.getContext(), android.R.drawable.alert_dark_frame);
-                    imageView.setImageDrawable(placeholder);
-                }
+        ImageView imageView = imageViewReference.get();
+        if (imageView != null) {
+            if (bitmap != null) {
+                imageView.setImageBitmap(bitmap);
+            } else {
+                Drawable placeholder = ContextCompat.getDrawable(imageView.getContext(), android.R.drawable.alert_dark_frame);
+                imageView.setImageDrawable(placeholder);
             }
         }
     }

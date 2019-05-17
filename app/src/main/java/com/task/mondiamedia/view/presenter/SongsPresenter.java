@@ -1,10 +1,10 @@
-package com.task.mondiamedia.mondiamediaapplication.view.presenter;
+package com.task.mondiamedia.view.presenter;
 
 import android.os.AsyncTask;
 
-import com.task.mondiamedia.mondiamediaapplication.network.ApiRequestAsynTask;
-import com.task.mondiamedia.mondiamediaapplication.model.SongModel;
-import com.task.mondiamedia.mondiamediaapplication.view.ApiContract;
+import com.task.mondiamedia.model.SongModel;
+import com.task.mondiamedia.network.ApiRequestAsynTask;
+import com.task.mondiamedia.view.ApiContract;
 
 import java.util.List;
 
