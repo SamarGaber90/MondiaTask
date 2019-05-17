@@ -1,0 +1,21 @@
+
+Bsquid:S1170"!Make this final field static too.(ú‡”„þÿÿÿÿ8¬î§ÿ«-
+<squid:S1170"!Make this final field static too.(Û§Ö8¬î§ÿ«-
+Ksquid:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8œ¨²ÿ«-
+8squid:S1643"Use a StringBuilder instead.(§ûÆ¤8œ¨²ÿ«-
+=squid:S1170"!Make this final field static too.(§ Ü­8¬î§ÿ«-
+Rsquid:S2696"6Make the enclosing method "static" or remove this set.(«¹¹¥8’™¸ÿ«-
+<squid:S1170"!Make this final field static too.(÷Ó´8¬î§ÿ«-
+ƒsquid:S00116"aRename this field "ACCESS_TOKEN_KEY_VALUE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú‡”„þÿÿÿÿ8¬î§ÿ«-
+wsquid:S00116"[Rename this field "GETWAY_KEY_VALUE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷Ó´8¬î§ÿ«-
+Bsquid:S1170"!Make this final field static too.(Ó’Òþÿÿÿÿ8¬î§ÿ«-
+=squid:S1170"!Make this final field static too.(…ÊÌä8¬î§ÿ«-
+Bsquid:S1170"!Make this final field static too.(üÓ ·ýÿÿÿÿ8¬î§ÿ«-
+Gsquid:S1168"+Return an empty collection instead of null.(¥¹ï8¬î§ÿ«-
+wsquid:S00116"URename this field "GETWAY_KEY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ó’Òþÿÿÿÿ8¬î§ÿ«-
+Bsquid:S1659"&Declare "response" on a separate line.(ã—æ…8œ¨²ÿ«-
+|squid:S00116"ZRename this field "ACCESS_TOKE_KEY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üÓ ·ýÿÿÿÿ8¬î§ÿ«-
+Esquid:S00108")Either remove or fill this block of code.(”ã‰G8œ¨²ÿ«-
+xsquid:S00116"[Rename this field "TOKEN_API_METHOD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…ÊÌä8¬î§ÿ«-
+osquid:S00116"SRename this field "BASE_URL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Û§Ö8¬î§ÿ«-
+{squid:S00116"^Rename this field "ALL_LIST_API_METHOD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§ Ü­8¬î§ÿ«-
